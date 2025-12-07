@@ -1,0 +1,167 @@
+/* McDonald's Header Styles */
+.mcdonalds-header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Speedee', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Top Navigation */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 40px;
+}
+
+.top-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.top-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+}
+
+.mcdonalds-logo {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-link {
+  color: #292929;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #FFC72C;
+}
+
+.search-btn,
+.locate-btn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #292929;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.search-btn:hover,
+.locate-btn:hover {
+  color: #FFC72C;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.locate-btn .icon {
+  color: #DA291C;
+}
+
+.order-btn {
+  background-color: #FFBC0D;
+  color: #292929;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.order-btn:hover {
+  background-color: #f5b800;
+}
+
+/* Main Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  gap: 32px;
+  overflow-x: auto;
+}
+
+.main-nav-link {
+  color: #292929;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 0;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.main-nav-link:hover {
+  border-bottom-color: #FFC72C;
+}
+
+.main-nav-link.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-icon {
+  width: 18px;
+  height: 18px;
+  margin-left: -2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .top-nav {
+    padding: 12px 20px;
+  }
+
+  .main-nav {
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  .top-nav-links {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-link,
+  .search-btn {
+    display: none;
+  }
+
+  .main-nav {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-nav-link {
+    font-size: 14px;
+    gap: 24px;
+  }
+}
