@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './functionpro.css';
+import ViewPro from './viewpro';
 
-function FunctionPro() {
+function FunctionPro({ onAddToCart }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const functionProducts = [
     {
       id: 1,
@@ -62,31 +64,54 @@ function FunctionPro() {
   ];
 
   return (
-    <section className="functionpro-section">
-      <div className="functionpro-container">
-        <div className="functionpro-grid">
-          {functionProducts.map((product) => (
-            <div key={product.id} className="functionpro-card">
-              <div className="functionpro-image-wrapper">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="functionpro-image"
-                />
-              </div>
-              <div className="functionpro-content">
-                <h3 className="functionpro-title">{product.title}</h3>
-                <p className="functionpro-description">{product.description}</p>
-                <div className="functionpro-footer">
-                  <span className="functionpro-price">{product.price}</span>
-                  <button className="functionpro-add-btn">ADD</button>
+    <>
+      <section className="functionpro-section">
+        <div className="functionpro-container">
+          <div className="functionpro-grid">
+            {functionProducts.map((product) => (
+              <div
+                key={product.id}
+                className="functionpro-card"
+                onClick={() => setSelectedProduct(product)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="functionpro-image-wrapper">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="functionpro-image"
+                  />
+                </div>
+                <div className="functionpro-content">
+                  <h3 className="functionpro-title">{product.title}</h3>
+                  <p className="functionpro-description">{product.description}</p>
+                  <div className="functionpro-footer">
+                    <span className="functionpro-price">{product.price}</span>
+                    <button
+                      className="functionpro-add-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProduct(product);
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedProduct && (
+        <ViewPro
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onAddToCart={onAddToCart}
+        />
+      )}
+    </>
   );
 }
 

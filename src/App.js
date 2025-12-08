@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 import Header from './component/header';
 import Slider from './component/slider';
 import Product from './component/product';
@@ -15,26 +16,60 @@ import FamilyPro from './component/familypro';
 import Ice from './component/ice';
 import IcePro from './component/icepro';
 import Footer from './component/footer';
+import Cart from './component/cart';
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleAddToCart = (item) => {
+    setCartItems([...cartItems, item]);
+    setIsCartOpen(true);
+  };
+
+  const handleUpdateQuantity = (index, newQuantity) => {
+    if (newQuantity < 1) return;
+    const updatedCart = [...cartItems];
+    updatedCart[index].quantity = newQuantity;
+    setCartItems(updatedCart);
+  };
+
+  const handleRemoveItem = (index) => {
+    const updatedCart = cartItems.filter((_, i) => i !== index);
+    setCartItems(updatedCart);
+  };
+
+  const handleClearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <div className="App">
       <Header />
       <Slider />
       <Product />
       <Popular />
-      <PopularPro />
+      <PopularPro onAddToCart={handleAddToCart} />
       <Burger />
-      <BurgerPro />
+      <BurgerPro onAddToCart={handleAddToCart} />
       <Night />
-      <NightPro />
+      <NightPro onAddToCart={handleAddToCart} />
       <Function />
-      <FunctionPro />
+      <FunctionPro onAddToCart={handleAddToCart} />
       <Family />
-      <FamilyPro />
+      <FamilyPro onAddToCart={handleAddToCart} />
       <Ice />
-      <IcePro />
+      <IcePro onAddToCart={handleAddToCart} />
       <Footer />
+
+      <Cart
+        cartItems={cartItems}
+        onUpdateQuantity={handleUpdateQuantity}
+        onRemoveItem={handleRemoveItem}
+        onClearCart={handleClearCart}
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+      />
     </div>
   );
 }

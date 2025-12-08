@@ -1,0 +1,351 @@
+/* Thanks Overlay */
+.thanks-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Thanks Container */
+.thanks-container {
+  background: #fff;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.thanks-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s;
+}
+
+.thanks-close-btn:hover {
+  background: #E4002B;
+}
+
+.thanks-close-btn:hover svg {
+  color: #fff;
+}
+
+.thanks-close-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #666;
+  transition: color 0.3s;
+}
+
+/* Success Icon */
+.success-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 20px;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Thanks Content */
+.thanks-content {
+  padding: 0 30px 40px;
+  text-align: center;
+}
+
+.thanks-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #27AE60;
+  margin: 0 0 10px 0;
+}
+
+.thanks-subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 30px 0;
+}
+
+/* Order Info Box */
+.order-info-box {
+  background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.order-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.order-info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
+
+.info-value {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: #000;
+  font-weight: 700;
+}
+
+.order-number {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #E4002B;
+}
+
+.total-amount {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Email Confirmation */
+.email-confirmation {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-left: 4px solid #E4002B;
+}
+
+.email-icon {
+  width: 40px;
+  height: 40px;
+  color: #E4002B;
+  margin-bottom: 10px;
+}
+
+.email-confirmation p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.email-address {
+  font-weight: 700;
+  color: #E4002B;
+  font-size: 16px;
+}
+
+/* Delivery Info */
+.delivery-info {
+  background: #fff;
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.delivery-info h3 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #292929;
+  margin: 0 0 15px 0;
+}
+
+.delivery-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+}
+
+.delivery-item svg {
+  width: 20px;
+  height: 20px;
+  color: #E4002B;
+  flex-shrink: 0;
+}
+
+/* Order Summary Box */
+.order-summary-box {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.order-summary-box h3 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #292929;
+  margin: 0 0 15px 0;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+}
+
+.summary-item svg {
+  width: 18px;
+  height: 18px;
+  color: #27AE60;
+  flex-shrink: 0;
+}
+
+/* Thanks Message */
+.thanks-message {
+  margin-bottom: 30px;
+}
+
+.thanks-message p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: #666;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+/* Continue Button */
+.continue-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #E4002B 0%, #c00024 100%);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(228, 0, 43, 0.3);
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(228, 0, 43, 0.4);
+}
+
+.continue-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .thanks-container {
+    max-width: 95%;
+    margin: 10px;
+  }
+
+  .thanks-content {
+    padding: 0 20px 30px;
+  }
+
+  .thanks-title {
+    font-size: 24px;
+  }
+
+  .thanks-subtitle {
+    font-size: 14px;
+  }
+
+  .order-info-box,
+  .email-confirmation,
+  .delivery-info,
+  .order-summary-box {
+    padding: 15px;
+  }
+}

@@ -8,12 +8,12 @@ function Product() {
     {
       id: 1,
       image: 'https://kababjeesfriedchicken.com/_next/image?url=https%3A%2F%2Fassets.indolj.io%2Fupload%2F1760609852-summer-deals.png%3Fq%3D10&w=256&q=75',
-      title: 'Summer Deals'
+      title: 'Popular Item'
     },
     {
       id: 2,
       image: 'https://kababjeesfriedchicken.com/_next/image?url=https%3A%2F%2Fassets.indolj.io%2Fupload%2F1760609752-meal-deals.png%3Fq%3D10&w=256&q=75',
-      title: 'Meal Deals'
+      title: 'LACHA PARATHA BURGER'
     },
     {
       id: 3,
@@ -42,8 +42,8 @@ function Product() {
     },
     {
       id: 8,
-      image: 'https://kababjeesfriedchicken.com/_next/image?url=https%3A%2F%2Fassets.indolj.io%2Fupload%2F1760609629-burger-deals.png%3Fq%3D10&w=256&q=75',
-      title: 'Burger Deals'
+      image: 'https://kababjeesfriedchicken.com/_next/image?url=https%3A%2F%2Fassets.indolj.io%2Fupload%2F1753603302-514086168_731434292804725_8405815010620406476_n.jpg%3Fq%3D10&w=640&q=75',
+      title: 'ICE CREAM DELIGHTS'
     },
     {
       id: 9,
@@ -60,6 +60,35 @@ function Product() {
     }
   };
 
+  const handleProductClick = (productTitle) => {
+    let targetSection = null;
+
+    if (productTitle === 'Popular Item') {
+      targetSection = document.querySelector('.popular-section');
+    } else if (productTitle === 'LACHA PARATHA BURGER') {
+      targetSection = document.querySelector('.burger-section');
+    } else if (productTitle === 'Midnight Deal') {
+      targetSection = document.querySelector('.night-section');
+    } else if (productTitle === 'Family Feast') {
+      targetSection = document.querySelector('.family-section');
+    } else if (productTitle === 'Korean Range') {
+      targetSection = document.querySelector('.function-section');
+    } else if (productTitle === 'ICE CREAM DELIGHTS') {
+      targetSection = document.querySelector('.ice-section');
+    }
+
+    if (targetSection) {
+      const headerHeight = 120;
+      const elementPosition = targetSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="product-section">
       <div className="product-container">
@@ -73,7 +102,12 @@ function Product() {
 
           <div className="product-carousel" ref={scrollContainerRef}>
             {products.map((product) => (
-              <div key={product.id} className="product-card">
+              <div
+                key={product.id}
+                className="product-card"
+                onClick={() => handleProductClick(product.title)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="product-image-wrapper">
                   <img src={product.image} alt={product.title} className="product-image" />
                 </div>

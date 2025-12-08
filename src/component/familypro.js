@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './familypro.css';
+import ViewPro from './viewpro';
 
-function FamilyPro() {
+function FamilyPro({ onAddToCart }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const familyProducts = [
     {
       id: 1,
@@ -62,31 +64,54 @@ function FamilyPro() {
   ];
 
   return (
-    <section className="familypro-section">
-      <div className="familypro-container">
-        <div className="familypro-grid">
-          {familyProducts.map((product) => (
-            <div key={product.id} className="familypro-card">
-              <div className="familypro-image-wrapper">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="familypro-image"
-                />
-              </div>
-              <div className="familypro-content">
-                <h3 className="familypro-title">{product.title}</h3>
-                <p className="familypro-description">{product.description}</p>
-                <div className="familypro-footer">
-                  <span className="familypro-price">{product.price}</span>
-                  <button className="familypro-add-btn">ADD</button>
+    <>
+      <section className="familypro-section">
+        <div className="familypro-container">
+          <div className="familypro-grid">
+            {familyProducts.map((product) => (
+              <div
+                key={product.id}
+                className="familypro-card"
+                onClick={() => setSelectedProduct(product)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="familypro-image-wrapper">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="familypro-image"
+                  />
+                </div>
+                <div className="familypro-content">
+                  <h3 className="familypro-title">{product.title}</h3>
+                  <p className="familypro-description">{product.description}</p>
+                  <div className="familypro-footer">
+                    <span className="familypro-price">{product.price}</span>
+                    <button
+                      className="familypro-add-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProduct(product);
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedProduct && (
+        <ViewPro
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onAddToCart={onAddToCart}
+        />
+      )}
+    </>
   );
 }
 

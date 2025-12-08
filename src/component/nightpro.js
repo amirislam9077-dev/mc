@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './nightpro.css';
+import ViewPro from './viewpro';
 
-function NightPro() {
+function NightPro({ onAddToCart }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const nightProducts = [
     {
       id: 1,
@@ -62,31 +64,54 @@ function NightPro() {
   ];
 
   return (
-    <section className="nightpro-section">
-      <div className="nightpro-container">
-        <div className="nightpro-grid">
-          {nightProducts.map((product) => (
-            <div key={product.id} className="nightpro-card">
-              <div className="nightpro-image-wrapper">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="nightpro-image"
-                />
-              </div>
-              <div className="nightpro-content">
-                <h3 className="nightpro-title">{product.title}</h3>
-                <p className="nightpro-description">{product.description}</p>
-                <div className="nightpro-footer">
-                  <span className="nightpro-price">{product.price}</span>
-                  <button className="nightpro-add-btn">ADD</button>
+    <>
+      <section className="nightpro-section">
+        <div className="nightpro-container">
+          <div className="nightpro-grid">
+            {nightProducts.map((product) => (
+              <div
+                key={product.id}
+                className="nightpro-card"
+                onClick={() => setSelectedProduct(product)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="nightpro-image-wrapper">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="nightpro-image"
+                  />
+                </div>
+                <div className="nightpro-content">
+                  <h3 className="nightpro-title">{product.title}</h3>
+                  <p className="nightpro-description">{product.description}</p>
+                  <div className="nightpro-footer">
+                    <span className="nightpro-price">{product.price}</span>
+                    <button
+                      className="nightpro-add-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProduct(product);
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedProduct && (
+        <ViewPro
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onAddToCart={onAddToCart}
+        />
+      )}
+    </>
   );
 }
 

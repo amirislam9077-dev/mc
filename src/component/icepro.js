@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './icepro.css';
+import ViewPro from './viewpro';
 
-function IcePro() {
+function IcePro({ onAddToCart }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const iceProducts = [
     {
       id: 1,
@@ -62,31 +64,57 @@ function IcePro() {
   ];
 
   return (
-    <section className="icepro-section">
-      <div className="icepro-container">
-        <div className="icepro-grid">
-          {iceProducts.map((product) => (
-            <div key={product.id} className="icepro-card">
-              <div className="icepro-image-wrapper">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="icepro-image"
-                />
-              </div>
-              <div className="icepro-content">
-                <h3 className="icepro-title">{product.title}</h3>
-                <p className="icepro-description">{product.description}</p>
-                <div className="icepro-footer">
-                  <span className="icepro-price">{product.price}</span>
-                  <button className="icepro-add-btn">ADD</button>
+    <>
+      <section className="icepro-section">
+        <div className="icepro-container">
+          <div className="icepro-grid">
+            {iceProducts.map((product) => (
+              <div
+                key={product.id}
+                className="icepro-card"
+                onClick={() => {
+                  console.log('Product clicked:', product);
+                  setSelectedProduct(product);
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="icepro-image-wrapper">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="icepro-image"
+                  />
+                </div>
+                <div className="icepro-content">
+                  <h3 className="icepro-title">{product.title}</h3>
+                  <p className="icepro-description">{product.description}</p>
+                  <div className="icepro-footer">
+                    <span className="icepro-price">{product.price}</span>
+                    <button
+                      className="icepro-add-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProduct(product);
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedProduct && (
+        <ViewPro
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onAddToCart={onAddToCart}
+        />
+      )}
+    </>
   );
 }
 

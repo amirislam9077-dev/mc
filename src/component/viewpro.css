@@ -1,0 +1,354 @@
+/* ViewPro Modal Overlay */
+.viewpro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+/* Modal Container */
+.viewpro-modal {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button */
+.viewpro-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #E4002B;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.viewpro-close-btn:hover {
+  background: #c00024;
+}
+
+.viewpro-close-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+/* Modal Content */
+.viewpro-content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  max-height: 90vh;
+}
+
+/* Left Side - Image Section */
+.viewpro-image-section {
+  flex: 0 0 42%;
+  background: #E4002B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.viewpro-product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Right Side - Details Section */
+.viewpro-details-section {
+  flex: 1;
+  padding: 60px 40px 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Product Title */
+.viewpro-product-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #292929;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+/* Product Price */
+.viewpro-product-price {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #292929;
+  margin: 0 0 15px 0;
+}
+
+/* Product Description */
+.viewpro-product-description {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  color: #727272;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+}
+
+/* Size Options */
+.viewpro-size-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.viewpro-size-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.viewpro-size-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #E4002B;
+  cursor: pointer;
+}
+
+.viewpro-radio-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: #292929;
+  flex: 1;
+}
+
+.viewpro-size-price {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: #292929;
+  font-weight: 500;
+}
+
+/* Special Instructions */
+.viewpro-special-instructions {
+  margin-bottom: 25px;
+}
+
+.viewpro-instructions-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #292929;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.viewpro-instructions-input {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  color: #292929;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.viewpro-instructions-input:focus {
+  outline: none;
+  border-color: #E4002B;
+}
+
+.viewpro-instructions-input::placeholder {
+  color: #999;
+}
+
+.viewpro-char-count {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+/* Footer - Quantity and Add to Cart */
+.viewpro-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* Quantity Controls */
+.viewpro-quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #f5f5f5;
+  border-radius: 50px;
+  padding: 0;
+}
+
+.viewpro-quantity-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #f5f5f5;
+  color: #292929;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.viewpro-quantity-btn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.viewpro-quantity-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.viewpro-quantity-value {
+  min-width: 40px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #292929;
+}
+
+/* Add to Cart Button */
+.viewpro-add-to-cart-btn {
+  flex: 1;
+  background: #E4002B;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.viewpro-add-to-cart-btn:hover {
+  background: #c00024;
+  transform: translateY(-2px);
+}
+
+.viewpro-cart-price {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.viewpro-cart-text {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.viewpro-cart-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .viewpro-content {
+    flex-direction: column;
+  }
+
+  .viewpro-image-section {
+    flex: 0 0 auto;
+    min-height: 300px;
+    padding: 30px;
+  }
+
+  .viewpro-details-section {
+    padding: 30px 25px 25px;
+  }
+
+  .viewpro-product-title {
+    font-size: 24px;
+  }
+
+  .viewpro-footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .viewpro-add-to-cart-btn {
+    width: 100%;
+  }
+
+  .viewpro-quantity-controls {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .viewpro-modal {
+    border-radius: 0;
+    max-height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+
+  .viewpro-overlay {
+    padding: 0;
+  }
+
+  .viewpro-image-section {
+    min-height: 250px;
+    padding: 20px;
+  }
+
+  .viewpro-details-section {
+    padding: 20px;
+  }
+
+  .viewpro-product-title {
+    font-size: 20px;
+  }
+
+  .viewpro-product-price {
+    font-size: 18px;
+  }
+}

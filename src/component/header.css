@@ -3,8 +3,11 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: 'Speedee', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -133,35 +136,230 @@
   margin-left: -2px;
 }
 
-/* Responsive */
+/* Responsive Design */
+
+/* Tablet (iPad, iPad Pro) - 768px to 1024px */
 @media (max-width: 1024px) {
   .top-nav {
-    padding: 12px 20px;
+    padding: 10px 24px;
   }
 
-  .main-nav {
-    padding: 0 20px;
+  .top-nav-left {
     gap: 20px;
   }
 
-  .top-nav-links {
-    gap: 15px;
+  .top-nav-right {
+    gap: 16px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .search-btn,
+  .locate-btn {
+    font-size: 13px;
+  }
+
+  .order-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .main-nav {
+    padding: 0 24px;
+    gap: 24px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .main-nav-link {
+    font-size: 14px;
+    padding: 10px 0;
   }
 }
 
+/* Mobile Landscape & Small Tablets - 600px to 768px */
 @media (max-width: 768px) {
+  .top-nav {
+    padding: 10px 16px;
+  }
+
+  .top-nav-left {
+    gap: 12px;
+  }
+
+  .top-nav-right {
+    gap: 12px;
+  }
+
+  .logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Hide secondary nav links on tablets */
+  .nav-link {
+    display: none;
+  }
+
+  .search-btn {
+    display: none;
+  }
+
+  .locate-btn {
+    font-size: 0; /* Hide text, keep icon */
+    padding: 8px;
+  }
+
+  .locate-btn .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .order-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .main-nav {
+    padding: 0 16px;
+    gap: 20px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-nav-link {
+    font-size: 13px;
+    padding: 10px 0;
+  }
+
+  .dropdown-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* iPhone 12 Pro & Similar - 390px to 428px */
+@media (max-width: 428px) {
+  .mcdonalds-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .top-nav {
+    padding: 8px 12px;
+    flex-wrap: nowrap;
+  }
+
+  .top-nav-left {
+    gap: 8px;
+    flex: 1;
+  }
+
+  .top-nav-right {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  /* Hide all non-essential items */
   .nav-link,
   .search-btn {
     display: none;
   }
 
+  .locate-btn {
+    font-size: 0;
+    padding: 6px;
+    min-width: 32px;
+  }
+
+  .locate-btn .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .order-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 3px;
+  }
+
+  /* Horizontal scrolling menu */
   .main-nav {
-    overflow-x: scroll;
+    padding: 0 12px;
+    gap: 16px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
   }
 
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
   .main-nav-link {
-    font-size: 14px;
-    gap: 24px;
+    font-size: 12px;
+    padding: 8px 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .dropdown-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Small Mobile - Below 375px */
+@media (max-width: 375px) {
+  .top-nav {
+    padding: 6px 10px;
+  }
+
+  .logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .order-btn {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .main-nav {
+    padding: 0 10px;
+    gap: 12px;
+  }
+
+  .main-nav-link {
+    font-size: 11px;
+    padding: 6px 0;
   }
 }

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './burgerpro.css';
+import ViewPro from './viewpro';
 
-function BurgerPro() {
+function BurgerPro({ onAddToCart }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const burgerProducts = [
     {
       id: 1,
@@ -62,31 +64,54 @@ function BurgerPro() {
   ];
 
   return (
-    <section className="burgerpro-section">
-      <div className="burgerpro-container">
-        <div className="burgerpro-grid">
-          {burgerProducts.map((product) => (
-            <div key={product.id} className="burgerpro-card">
-              <div className="burgerpro-image-wrapper">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="burgerpro-image"
-                />
-              </div>
-              <div className="burgerpro-content">
-                <h3 className="burgerpro-title">{product.title}</h3>
-                <p className="burgerpro-description">{product.description}</p>
-                <div className="burgerpro-footer">
-                  <span className="burgerpro-price">{product.price}</span>
-                  <button className="burgerpro-add-btn">ADD</button>
+    <>
+      <section className="burgerpro-section">
+        <div className="burgerpro-container">
+          <div className="burgerpro-grid">
+            {burgerProducts.map((product) => (
+              <div
+                key={product.id}
+                className="burgerpro-card"
+                onClick={() => setSelectedProduct(product)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="burgerpro-image-wrapper">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="burgerpro-image"
+                  />
+                </div>
+                <div className="burgerpro-content">
+                  <h3 className="burgerpro-title">{product.title}</h3>
+                  <p className="burgerpro-description">{product.description}</p>
+                  <div className="burgerpro-footer">
+                    <span className="burgerpro-price">{product.price}</span>
+                    <button
+                      className="burgerpro-add-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProduct(product);
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedProduct && (
+        <ViewPro
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onAddToCart={onAddToCart}
+        />
+      )}
+    </>
   );
 }
 

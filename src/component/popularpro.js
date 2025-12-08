@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './popularpro.css';
+import ViewPro from './viewpro';
 
-function PopularPro() {
+function PopularPro({ onAddToCart }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const popularProducts = [
     {
       id: 1,
@@ -62,31 +64,54 @@ function PopularPro() {
   ];
 
   return (
-    <section className="popularpro-section">
-      <div className="popularpro-container">
-        <div className="popularpro-grid">
-          {popularProducts.map((product) => (
-            <div key={product.id} className="popularpro-card">
-              <div className="popularpro-image-wrapper">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="popularpro-image"
-                />
-              </div>
-              <div className="popularpro-content">
-                <h3 className="popularpro-title">{product.title}</h3>
-                <p className="popularpro-description">{product.description}</p>
-                <div className="popularpro-footer">
-                  <span className="popularpro-price">{product.price}</span>
-                  <button className="popularpro-add-btn">ADD</button>
+    <>
+      <section className="popularpro-section">
+        <div className="popularpro-container">
+          <div className="popularpro-grid">
+            {popularProducts.map((product) => (
+              <div
+                key={product.id}
+                className="popularpro-card"
+                onClick={() => setSelectedProduct(product)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="popularpro-image-wrapper">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="popularpro-image"
+                  />
+                </div>
+                <div className="popularpro-content">
+                  <h3 className="popularpro-title">{product.title}</h3>
+                  <p className="popularpro-description">{product.description}</p>
+                  <div className="popularpro-footer">
+                    <span className="popularpro-price">{product.price}</span>
+                    <button
+                      className="popularpro-add-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProduct(product);
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedProduct && (
+        <ViewPro
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onAddToCart={onAddToCart}
+        />
+      )}
+    </>
   );
 }
 

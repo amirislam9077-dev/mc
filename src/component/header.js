@@ -5,7 +5,14 @@ function Header() {
   const scrollToProduct = () => {
     const productSection = document.querySelector('.product-section');
     if (productSection) {
-      productSection.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 120;
+      const elementPosition = productSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -13,7 +20,14 @@ function Header() {
     setTimeout(() => {
       const popularSection = document.querySelector('.popular-section');
       if (popularSection) {
-        popularSection.scrollIntoView({ behavior: 'smooth' });
+        const headerHeight = 120;
+        const elementPosition = popularSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }, 100);
   };
@@ -22,10 +36,82 @@ function Header() {
     setTimeout(() => {
       const burgerSection = document.querySelector('.burger-section');
       if (burgerSection) {
-        burgerSection.scrollIntoView({ behavior: 'smooth' });
+        const headerHeight = 120;
+        const elementPosition = burgerSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }, 100);
   };
+
+  const scrollToNight = () => {
+    setTimeout(() => {
+      const nightSection = document.querySelector('.night-section');
+      if (nightSection) {
+        const headerHeight = 120;
+        const elementPosition = nightSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  };
+
+  const scrollToFamily = () => {
+    setTimeout(() => {
+      const familySection = document.querySelector('.family-section');
+      if (familySection) {
+        const headerHeight = 120;
+        const elementPosition = familySection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  };
+
+  const scrollToFunction = () => {
+    setTimeout(() => {
+      const functionSection = document.querySelector('.function-section');
+      if (functionSection) {
+        const headerHeight = 120;
+        const elementPosition = functionSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  };
+
+  const scrollToIce = () => {
+    setTimeout(() => {
+      const iceSection = document.querySelector('.ice-section');
+      if (iceSection) {
+        const headerHeight = 120;
+        const elementPosition = iceSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  };
+
   return (
     <header className="mcdonalds-header">
       {/* Top Navigation */}
@@ -64,18 +150,12 @@ function Header() {
 
       {/* Main Navigation */}
       <nav className="main-nav">
-        <a href="#menu" className="main-nav-link dropdown" onClick={(e) => { e.preventDefault(); scrollToProduct(); }}>
-          Our Menu
-          <svg className="dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7 10l5 5 5-5z"/>
-          </svg>
-        </a>
         <a href="#food" className="main-nav-link" onClick={(e) => { e.preventDefault(); scrollToPopular(); }}>Popular Item</a>
         <a href="#quality" className="main-nav-link" onClick={(e) => { e.preventDefault(); scrollToBurger(); }}>LACHA PARATHA BURGER</a>
-        <a href="#app" className="main-nav-link">MIDNIGHT DEAL</a>
-        <a href="#family" className="main-nav-link">FAMILY FEAST</a>
-        <a href="#korean" className="main-nav-link">Korean Range</a>
-        <a href="#icecream" className="main-nav-link">ICE CREAM DELIGHTS</a>
+        <a href="#app" className="main-nav-link" onClick={(e) => { e.preventDefault(); scrollToNight(); }}>MIDNIGHT DEAL BURGER</a>
+        <a href="#family" className="main-nav-link" onClick={(e) => { e.preventDefault(); scrollToFamily(); }}>FAMILY FEAST</a>
+        <a href="#korean" className="main-nav-link" onClick={(e) => { e.preventDefault(); scrollToFunction(); }}>Korean Range</a>
+        <a href="#icecream" className="main-nav-link" onClick={(e) => { e.preventDefault(); scrollToIce(); }}>ICE CREAM DELIGHTS</a>
       </nav>
     </header>
   );
